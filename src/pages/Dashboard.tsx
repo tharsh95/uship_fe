@@ -100,7 +100,7 @@ const Dashboard: React.FC = () => {
   const [viewMode, setViewMode] = useState<'grid' | 'tile'>('grid');
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');
-  const [department, setDepartment] = useState('');
+  const [department] = useState('');
   const [sortBy, setSortBy] = useState('name');
   const [sortOrder, setSortOrder] = useState('asc');
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -178,7 +178,6 @@ const Dashboard: React.FC = () => {
     }
   });
 
-  const departments = ['Engineering', 'Design', 'Marketing', 'Sales', 'HR'];
   const sortOptions = [
     { value: 'name', label: 'Name' },
     { value: 'department', label: 'Department' },

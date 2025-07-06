@@ -11,7 +11,6 @@ import {
   LogOut,
   ChevronDown,
   Bell,
-  Search,
   User2
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';

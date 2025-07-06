@@ -186,6 +186,16 @@ const EmployeeDetails: React.FC = () => {
   const handleEditSave = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
+      // Handle subjects field - it could be a string (from form input) or an array (from existing data)
+      let subjectsArray: string[] = [];
+      if (typeof editForm.subjects === 'string') {
+        // If it's a string, split by comma and clean up
+        subjectsArray = editForm.subjects.split(',').map((s: string) => s.trim()).filter(Boolean);
+      } else if (Array.isArray(editForm.subjects)) {
+        // If it's already an array, use it as is
+        subjectsArray = editForm.subjects;
+      }
+
       await updateEmployee({
         variables: {
           id: parseInt(employee.id, 10),
@@ -195,7 +205,7 @@ const EmployeeDetails: React.FC = () => {
           department: editForm.department,
           position: editForm.position,
           salary: parseFloat(editForm.salary),
-          subjects: editForm.subjects.split(',').map((s: string) => s.trim()).filter(Boolean),
+          subjects: subjectsArray,
           avatar: editForm.avatar,
           phone: editForm.phone,
           address: editForm.address,

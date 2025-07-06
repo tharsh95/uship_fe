@@ -103,9 +103,9 @@ const Dashboard: React.FC = () => {
   const [department, setDepartment] = useState('');
   const [sortBy, setSortBy] = useState('name');
   const [sortOrder, setSortOrder] = useState('asc');
-  const [showFilters, setShowFilters] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [showAddModal, setShowAddModal] = useState(false);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -243,6 +243,12 @@ const Dashboard: React.FC = () => {
       setFormData({
         name: '', email: '', age: '', department: '', position: '', salary: '', class: '', subjects: '', attendance: '', avatar: '', phone: '', address: '', startDate: '', status: 'active', role: 'employee',
       });
+      // Show success message
+      setShowSuccessMessage(true);
+      // Hide success message after 5 seconds
+      setTimeout(() => {
+        setShowSuccessMessage(false);
+      }, 15000);
     } catch (err) {
       // Optionally handle error (e.g., show notification)
       console.error('Failed to add employee:', err);
@@ -540,6 +546,34 @@ const Dashboard: React.FC = () => {
             </form>
           </div>
         </div>
+      )}
+
+      {/* Success Notification */}
+      {showSuccessMessage && (
+        <motion.div
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -50 }}
+          className="fixed top-4 right-4 z-50 bg-green-500 text-white px-6 py-4 rounded-lg shadow-lg flex items-center space-x-3"
+        >
+          <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
+            <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+            </svg>
+          </div>
+          <div>
+            <p className="font-semibold">Employee Added Successfully!</p>
+            <p className="text-sm opacity-90">Password has been sent to the employee's email address.</p>
+          </div>
+          <button
+            onClick={() => setShowSuccessMessage(false)}
+            className="text-white hover:text-gray-200 transition-colors"
+          >
+            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+            </svg>
+          </button>
+        </motion.div>
       )}
 
       <div className="space-y-6">

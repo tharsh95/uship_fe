@@ -29,7 +29,6 @@ const REGISTER_MUTATION = gql`
 
 interface User {
     employee:{
-
         id: string;
         email: string;
         role: string;

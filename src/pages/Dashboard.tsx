@@ -57,19 +57,19 @@ const ADD_EMPLOYEE = gql`
   mutation AddEmployee(
     $name: String!
     $email: String!
-    $age: Int!
-    $department: String!
-    $position: String!
-    $salary: Float!
+    $age: Int
+    $department: String
+    $position: String
+    $salary: Float
     $class: String!
     $subjects: [String!]!
     $attendance: Float!
-    $avatar: String!
-    $phone: String!
-    $address: String!
-    $startDate: Int!
-    $status: String!
-    $role: Role!
+    $avatar: String
+    $phone: String
+    $address: String
+    $startDate: Int
+    $status: String
+    $role: Role
   ) {
     addEmployee(
       name: $name
@@ -95,7 +95,6 @@ const ADD_EMPLOYEE = gql`
     }
   }
 `;
-
 const Dashboard: React.FC = () => {
   const [viewMode, setViewMode] = useState<'grid' | 'tile'>('grid');
   const [page, setPage] = useState(1);
@@ -415,9 +414,7 @@ const Dashboard: React.FC = () => {
                   </div>
                 </th>
               ))}
-              {/* <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Actions
-              </th> */}
+       
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
@@ -495,7 +492,6 @@ const Dashboard: React.FC = () => {
 
   return (
     <div className="relative">
-      {/* Add Employee Button */}
       {role==="ADMIN"&&(
           
           <div className="flex justify-end mb-6">
@@ -508,7 +504,6 @@ const Dashboard: React.FC = () => {
       </div>
         )}
 
-      {/* Add Employee Modal */}
       {showAddModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/60 backdrop-blur-sm">
           <div className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-lg relative">
@@ -521,7 +516,7 @@ const Dashboard: React.FC = () => {
             <h2 className="text-2xl font-bold mb-6 text-center">Add New Employee</h2>
             <form className="space-y-4" onSubmit={handleAddEmployee}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input name="name" value={formData.name} onChange={handleFormChange} required className="input p-2 border border-blue-800 rounded-lg" placeholder="Name" />
+                <input name="name" value={formData.name} onChange={handleFormChange} required  className="input p-2 border border-blue-800 rounded-lg" placeholder="Name" />
                 <input name="email" value={formData.email} onChange={handleFormChange} required className="input p-2 border border-blue-800 rounded-lg" placeholder="Email" type="email" />
                 <input name="age" value={formData.age} onChange={handleFormChange}  className="input p-2 border border-blue-800 rounded-lg" placeholder="Age" type="number" />
                 <input name="department" value={formData.department} onChange={handleFormChange} className="input p-2 border border-blue-800 rounded-lg" placeholder="Department" />

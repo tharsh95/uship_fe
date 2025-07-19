@@ -256,7 +256,7 @@ const EmployeeDetails: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <input name="name" value={editForm?.name || ''} onChange={handleEditChange} required className="input p-2 border border-blue-800 rounded-lg" placeholder="Name" />
                 <input name="email" value={editForm?.email || ''} onChange={handleEditChange} required className="input p-2 border border-blue-800 rounded-lg" placeholder="Email" type="email" />
-                <input name="age" value={editForm?.age || ''} onChange={handleEditChange} required className="input p-2 border border-blue-800 rounded-lg" placeholder="Age" type="number" />
+                <input name="age" value={editForm?.age || ''} onChange={handleEditChange}  className="input p-2 border border-blue-800 rounded-lg" placeholder="Age" type="number" />
                 <input name="department" value={editForm?.department || ''} onChange={handleEditChange} className="input p-2 border border-blue-800 rounded-lg" placeholder="Department" />
                 <input name="position" value={editForm?.position || ''} onChange={handleEditChange} className="input p-2 border border-blue-800 rounded-lg" placeholder="Position" />
                 <input name="salary" value={editForm?.salary || ''} onChange={handleEditChange} className="input p-2 border border-blue-800 rounded-lg" placeholder="Salary" type="number" />
